@@ -170,19 +170,19 @@
   //     return total + number * number;
   //   }); // should be 5, regardless of the iterator function passed in
   //          No accumulator is given so the first element is used.
-  _.reduce = function(collection, callback, accumulator) {
+  _.reduce = function(collection, iterator, accumulator) {
 
       if(accumulator === undefined){
         accumulator = collection.shift();
       }
     
     _.each(collection, function (current){
-        accumulator = callback(accumulator, current);
+        accumulator = iterator(accumulator, current);
       });
     
     return accumulator;
   };
-  
+
   // Determine if the array or object contains a given value (using `===`).
   _.contains = function(collection, target) {
     // TIP: Many iteration problems can be most easily expressed in
